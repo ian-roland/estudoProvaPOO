@@ -19,7 +19,9 @@ public class contaPoupanca extends conta {
 
     @Override
     public void atualizar(double taxa){
-        System.out.println("aaaa");
+        //saldo += taxa;
+        rendimentosMensais += (getRendimentosMensais()+taxa);
+        System.out.println(getRendimentosMensais()+getSaldo());
     }
         
     @Override

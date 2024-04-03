@@ -30,7 +30,10 @@ public class contaCorrente extends conta {
 
     @Override
     public void atualizar(double taxa){
-        
+        if(super.getSaldo() < 0){
+           // saldo -= taxa;
+            jurosMensais += getJurosMensais() + taxa;
+        }
     }
     
     @Override

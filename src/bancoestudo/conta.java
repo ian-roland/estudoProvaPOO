@@ -17,8 +17,8 @@ public abstract class conta {
     private double saquesMensal;
     private double depositosMensal;
     
-    private double rendimentosMensais;
-    private double jurosMensais;
+    protected double rendimentosMensais;
+    protected double jurosMensais;
     
     // CONSTRUTORES  /////////////////////
 
@@ -62,7 +62,7 @@ public abstract class conta {
         return saldo;
     }
     
-     public void setCpf(String cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
@@ -83,7 +83,7 @@ public abstract class conta {
     }
 
     public void setJurosMensais(double jurosMensais) {
-        this.jurosMensais = jurosMensais;
+        this.jurosMensais = jurosMensais *= -1;
     }
     
     
@@ -140,7 +140,7 @@ public abstract class conta {
         System.out.println("\n\t TIPO DA CONTA: " + tipoConta() +
                 "\n\t Juros / Rendimentos acumulados: " + (rendimentosMensais + jurosMensais) + 
                 "\n\t Saldo Atual: " + getSaldo() +
-                "\n\t Saldo Futuro: " + (getSaldo() + rendimentosMensais));
+                "\n\t Saldo Futuro: " + (getSaldo() + rendimentosMensais) );
         
     }
     
@@ -155,16 +155,6 @@ public abstract class conta {
         
     }
     
-    
-    private void fecharMes(){
-        
-        zerarAcumuladores();
-        atualizarSaldoRendimentosJuros();
-        
-    }
-    
-    // ----------------------------------------------------------------
-    
     public void atualizarSaldoRendimentosJuros(){
             
         if (saldo >= 0) {
@@ -174,6 +164,21 @@ public abstract class conta {
         }
         
     }
+    
+    
+    public void fecharMes(){
+        
+        atualizarSaldoRendimentosJuros();
+        zerarAcumuladores();
+        
+        
+        System.out.println("\nConta" + tipoConta() + "Fechada este mês, Saldo: " + saldo);
+        
+    }
+    
+    // ----------------------------------------------------------------
+    
+    
     
     // RA : 0040482221028 || Ian Francisco Roland do Nascimento
     
